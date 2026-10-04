@@ -1,0 +1,31 @@
+{
+  "name": "Premium Club · Premium Apartments Seekirchen",
+  "short_name": "Premium Club",
+  "description": "Dein Status, deine Punkte und Direktbuchungen bei Premium Apartments Seekirchen",
+  "lang": "de",
+  "dir": "ltr",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#DBD7D3",
+  "theme_color": "#C1BCB6",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
