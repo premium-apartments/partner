@@ -1,0 +1,379 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#C1BCB6">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Partner">
+<meta name="robots" content="noindex,nofollow">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="icon" type="image/png" href="icon-192.png">
+<title>Partner · Premium Apartments Seekirchen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme:light;
+  /* CI Premium Apartments Seekirchen (Masterinstruktionen 28.09.2026) */
+  --ci-greige:#DBD7D3; --ci-greige2:#C1BCB6; --ci-taupe:#7E715E; --ci-black:#2B2B2A;
+  --ground:var(--ci-greige2); --cream:var(--ci-greige); --paper:#FFFFFF; --line:#D6D1CB; --ink:var(--ci-black); --muted:#5C5852;
+  --gold:var(--ci-taupe); --fill:var(--ci-black); --onfill:#FFFFFF; --lakebg:#F0EDEA;
+  --ok:#4F7A52; --okbg:#EAF2E8; --warn:#96590F; --warnbg:#FBF1E2; --err:#A1402F; --errbg:#F8E7E3;
+  --shadow:0 1px 2px rgba(43,43,42,.05),0 6px 18px rgba(43,43,42,.06);
+  /* Schriften laut CI: Playfair Display Bold · DIN OT Condensed (Ersatz: DIN Condensed / Roboto Condensed – Abweichung, bis die Lizenzschrift eingebettet ist) · Helvetica Neue */
+  --serif:'Playfair Display',Georgia,'Times New Roman',serif;
+  --cond:'DIN OT Condensed','DINOT-Cond','DIN Condensed','Roboto Condensed','Arial Narrow',sans-serif-condensed,sans-serif;
+  --sans:'Helvetica Neue',Helvetica,Arial,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root{color-scheme:dark;--ground:#1E1D1B;--cream:#262523;--paper:#302E2B;--line:#45423E;--ink:#ECE9E5;--muted:#B5AFA7;--gold:#C4B8A6;--fill:#DBD7D3;--onfill:#2B2B2A;--lakebg:#3A3632;
+  --ok:#8DC08F;--okbg:#1E2A1F;--warn:#E3AE62;--warnbg:#2E2415;--err:#E28A77;--errbg:#321D18;--shadow:0 1px 2px rgba(0,0,0,.3),0 6px 18px rgba(0,0,0,.25)}}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.5}
+button,input,select,textarea{font:inherit;color:inherit}
+h1,h2,h3{font-family:var(--serif);font-weight:700;margin:0;text-wrap:balance}
+[hidden]{display:none!important}
+.shell{max-width:560px;margin:0 auto;background:var(--cream);min-height:100vh;box-shadow:0 0 0 1px var(--line)}
+.top{position:sticky;top:0;z-index:5;background:var(--paper);border-bottom:1px solid var(--line);padding:calc(10px + env(safe-area-inset-top,0px)) 16px 10px;display:flex;align-items:center;gap:12px}
+.top img{height:38px;width:auto;display:block}
+.top .wer{margin-left:auto;text-align:right;font-family:var(--cond);font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:11.5px;color:var(--gold);line-height:1.3}
+.top .wer b{display:block;color:var(--ink);font-size:13px;letter-spacing:.04em}
+main{padding:16px 16px calc(92px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:14px}
+.lbl{font-family:var(--cond);font-weight:700;letter-spacing:.12em;text-transform:uppercase;font-size:12px;color:var(--gold)}
+.sec{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-top:6px}
+.sec .lbl{color:var(--ink)}
+.card{background:var(--paper);border:1px solid var(--line);box-shadow:var(--shadow);padding:16px;display:flex;flex-direction:column;gap:10px}
+.card.neu{border-left:4px solid var(--ink)}
+.big{font-family:var(--serif);font-weight:700;font-size:23px;line-height:1.15}
+.muted{color:var(--muted)}
+.num{font-variant-numeric:tabular-nums}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.sp{justify-content:space-between}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:46px;padding:10px 16px;border:1px solid var(--ink);background:var(--paper);color:var(--ink);font-family:var(--cond);font-weight:700;letter-spacing:.06em;text-transform:uppercase;font-size:14.5px;cursor:pointer;text-decoration:none}
+.btn.pri{background:var(--fill);border-color:var(--fill);color:var(--onfill)}
+.btn.ghost{border-color:var(--line);color:var(--muted)}
+.btn.sm{min-height:34px;padding:5px 11px;font-size:12.5px}
+.btn.block{width:100%}
+.btn:disabled{opacity:.45;cursor:default}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.tag{display:inline-block;font-family:var(--cond);font-weight:700;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border:1px solid var(--line);color:var(--muted);white-space:nowrap}
+.tag.ok{border-color:var(--ok);color:var(--ok);background:var(--okbg)}
+.tag.warn{border-color:var(--warn);color:var(--warn);background:var(--warnbg)}
+.tag.err{border-color:var(--err);color:var(--err);background:var(--errbg)}
+.tag.dark{background:var(--fill);border-color:var(--fill);color:var(--onfill)}
+.tag.test{border:2px solid var(--warn);color:var(--warn);background:var(--warnbg)}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;font-size:14.5px}
+.kv dt{color:var(--muted)}
+.kv dd{margin:0;font-weight:600;overflow-wrap:anywhere}
+.geld{font-family:var(--serif);font-weight:700;font-size:20px}
+.wunsch{background:var(--lakebg);padding:8px 12px;font-size:14px}
+.posten{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:4px}
+.posten li{display:flex;justify-content:space-between;gap:10px;border-bottom:1px solid var(--line);padding:5px 0;font-size:15px}
+.posten li b{font-family:var(--serif);font-size:18px}
+.leer{text-align:center;color:var(--muted);padding:26px 12px;font-size:14.5px}
+.demo{background:var(--warnbg);border:1px solid var(--warn);color:var(--ink);padding:8px 12px;font-size:13px}
+.hinweis{background:var(--lakebg);border-left:3px solid var(--gold);padding:8px 12px;font-size:13.5px;color:var(--ink)}
+nav{position:fixed;left:0;right:0;bottom:0;z-index:6;display:flex;justify-content:center;background:var(--paper);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom,0px)}
+nav .in{display:grid;grid-template-columns:repeat(4,1fr);width:100%;max-width:560px}
+nav button{border:0;background:transparent;padding:9px 4px 8px;display:flex;flex-direction:column;align-items:center;gap:3px;color:var(--muted);font-family:var(--cond);font-weight:700;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;position:relative}
+nav button[aria-current="page"]{color:var(--ink)}
+nav button[aria-current="page"]::before{content:"";position:absolute;top:0;left:22%;right:22%;height:3px;background:var(--ink)}
+nav svg{width:23px;height:23px}
+nav .badge{position:absolute;top:4px;left:calc(50% + 6px);min-width:18px;height:18px;padding:0 5px;background:var(--err);color:#fff;border-radius:9px;font-size:11px;line-height:18px;font-family:var(--sans);letter-spacing:0}
+.login{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:28px 20px;gap:18px;text-align:center}
+.login img{height:64px;width:auto}
+.pin{display:flex;gap:8px;justify-content:center}
+.pin input{width:46px;height:56px;text-align:center;font-family:var(--serif);font-size:26px;border:1px solid var(--line);background:var(--paper)}
+.pin input:focus{outline:2px solid var(--ink);outline-offset:0}
+.feld{display:flex;flex-direction:column;gap:5px;text-align:left;font-size:13px;color:var(--muted)}
+.feld input,.feld select,.feld textarea{border:1px solid var(--line);background:var(--paper);padding:10px 12px;font-size:16px;color:var(--ink)}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chips button{border:1px solid var(--ink);background:var(--paper);padding:8px 12px;font-size:14px;cursor:pointer}
+.chips button[aria-pressed="true"]{background:var(--fill);color:var(--onfill)}
+.toast{position:fixed;left:50%;bottom:calc(84px + env(safe-area-inset-bottom,0px));transform:translateX(-50%) translateY(20px);opacity:0;transition:.25s;background:var(--fill);color:var(--onfill);padding:11px 18px;font-size:14.5px;max-width:calc(100% - 32px);z-index:9;pointer-events:none;box-shadow:var(--shadow)}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.toast.err{background:var(--err);color:#fff}
+.code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:14px;background:var(--lakebg);padding:8px 10px;overflow-wrap:anywhere;user-select:all}
+details.res{background:var(--paper);border:1px solid var(--line);box-shadow:var(--shadow);padding:16px}
+details.res>summary{cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:10px;font-family:var(--cond);font-weight:700;letter-spacing:.12em;text-transform:uppercase;font-size:12px;color:var(--ink)}
+details.res>summary::-webkit-details-marker{display:none}
+details.res>summary::after{content:"+";font-size:20px;line-height:1;color:var(--muted)}
+details.res[open]>summary::after{content:"–"}
+.resin{display:flex;flex-direction:column;gap:10px;margin-top:12px}
+.banner{background:var(--paper);border:1px solid var(--ink);border-left-width:4px;padding:12px 14px;display:flex;flex-direction:column;gap:8px;box-shadow:var(--shadow)}
+.banner b{font-family:var(--serif);font-size:17px;line-height:1.2}
+.steps{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px}
+a{color:inherit}
+</style>
+</head>
+<body>
+<div class="shell" id="app"><div class="leer">Lade …</div></div>
+<div class="toast" id="toast"></div>
+<script>
+(function(){
+var API='https://reneaugustin.app.n8n.cloud/webhook/partner-api';
+var LOGO='https://static.wixstatic.com/media/3002bf_1b9aa96be8c64ac1928f46bd48e89ff0~mv2.png/v1/fill/w_420,h_218,al_c,q_90/logo.png';
+var DEMO=/[?&#]demo=1\b/.test(location.search+location.hash);
+function store(k,v){try{if(v===undefined)return window.localStorage.getItem(k);if(v===null)window.localStorage.removeItem(k);else window.localStorage.setItem(k,v)}catch(e){return null}}
+var TOK=(function(){var m=/[?&#]t=([a-f0-9]{24,64})/i.exec(location.search+location.hash);if(m){store('pp_t',m[1].toLowerCase());return m[1].toLowerCase()}return store('pp_t')||''})();
+var PAGES=true;
+var DEVID=(function(){var d=store('pp_dev');if(!/^[A-Za-z0-9_-]{6,32}$/.test(d||'')){var a=new Uint8Array(12);try{(window.crypto||window.msCrypto).getRandomValues(a)}catch(e){for(var i=0;i<12;i++)a[i]=Math.floor(Math.random()*256)}d=Array.prototype.map.call(a,function(x){return ('0'+x.toString(16)).slice(-2)}).join('');store('pp_dev',d)}return d})();
+var S={tab:'anfragen',d:null,s:DEMO?'demo':(store('pp_s_'+TOK)||''),busy:false,ab:'',grund:'',grundTxt:'',pinNeu:false,wpBusy:false,wpPruef:false,resOpen:false};
+function $(s){return document.querySelector(s)}
+function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+function eur(x){var r=Math.round((+x||0)*100)/100;return (Math.abs(r-Math.round(r))<0.001?String(Math.round(r)):r.toFixed(2).replace('.',','))+' €'}
+function toast(t,err){var el=$('#toast');el.textContent=t;el.className='toast show'+(err?' err':'');clearTimeout(toast._t);toast._t=setTimeout(function(){el.className='toast'+(err?' err':'')},3200)}
+function wann(iso){if(!iso)return '';var d=new Date(iso),h=new Date();var hm=('0'+d.getHours()).slice(-2)+':'+('0'+d.getMinutes()).slice(-2);
+  var t0=new Date(h.getFullYear(),h.getMonth(),h.getDate()).getTime(),t1=new Date(d.getFullYear(),d.getMonth(),d.getDate()).getTime(),diff=Math.round((t1-t0)/864e5);
+  return (diff===0?'heute ':diff===1?'morgen ':['So','Mo','Di','Mi','Do','Fr','Sa'][d.getDay()]+' '+d.getDate()+'.'+(d.getMonth()+1)+'. ')+hm}
+var MON=['Jänner','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'];
+function monat(m){var p=String(m||'').split('-');return p.length===2?MON[+p[1]-1]+' '+p[0]:m}
+function dvoll(s){var p=String(s||'').split('-');return p.length===3?(+p[2])+'.'+(+p[1])+'.'+p[0]:''}
+var IC={inbox:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M3 13l2.5-7h13L21 13v6H3z"/><path d="M3 13h5l1.5 2.5h5L16 13h5"/></svg>',
+ cal:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3.5" y="5" width="17" height="15" rx="1"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg>',
+ geld:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="6" width="18" height="12" rx="1"/><circle cx="12" cy="12" r="2.6"/><path d="M6 9.5v5M18 9.5v5"/></svg>',
+ mehr:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>'};
+
+// ----- Beispieldaten (Vorschau) -----
+function demoDaten(){var h=new Date();function dd(n){var d=new Date(h.getFullYear(),h.getMonth(),h.getDate()+n);return d.getFullYear()+'-'+('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2)}
+  function tg(n){var d=new Date(h.getFullYear(),h.getMonth(),h.getDate()+n);return ['So','Mo','Di','Mi','Do','Fr','Sa'][d.getDay()]+' '+d.getDate()+'.'+(d.getMonth()+1)+'.'}
+  function inS(std){return new Date(Date.now()+std*36e5).toISOString()}
+  return {demo:true,name:'Beispiel-Partner',wer:'Beispiel-Team',ntfy:'pa-beispiel-thema',heute:dd(0),regeln:{antwortStd:3,zahlStd:4},
+  neu:[{id:'d1',art:'anfrage',angebot:'Abendessen',datum:dd(3),tag:tg(3),zeit:'19:00',personen:6,positionen:[{name:'Abendessen pro Person',n:6,preis:50}],betrag:300,wunsch:'Ein Gast isst vegetarisch.',ps:'neu',antwortBis:inS(2.5),ort:'Musterstadt'},
+       {id:'d2',art:'anfrage',angebot:'Abendessen',datum:dd(6),tag:tg(6),zeit:'19:00',personen:4,positionen:[{name:'Abendessen pro Person',n:4,preis:50}],betrag:200,wunsch:'',ps:'neu',antwortBis:inS(1.2),ort:'Musterstadt'}],
+  zahlung:[{id:'d3',art:'anfrage',angebot:'Abendessen',datum:dd(4),tag:tg(4),zeit:'19:00',personen:8,positionen:[],betrag:400,ps:'zahlung',zahlenBis:inS(3)}],
+  termine:[{id:'d4',art:'anfrage',angebot:'Abendessen',datum:dd(1),tag:tg(1),zeit:'19:00',personen:5,betrag:250,wunsch:'Geburtstag – gerne eine kleine Überraschung zum Dessert.',ps:'fix',gast:'Beispiel-Gast',apartment:'Apartment A',adresse:'Musterstraße 1, 1234 Musterstadt'}],
+  sammel:[{datum:dd(1),tag:tg(1),summe:70,bestaetigt:false,posten:[{name:'Vorspeise',n:4},{name:'Hauptgang',n:3},{name:'Dessert',n:2}],
+    lieferungen:[{id:'d5',fenster:'17–18 Uhr',abholung:'16:15',apartment:'Apartment A',positionen:[{name:'Vorspeise',n:2},{name:'Hauptgang',n:2}]},
+                 {id:'d6',fenster:'18–19 Uhr',abholung:'17:15',apartment:'Apartment B',positionen:[{name:'Vorspeise',n:2},{name:'Hauptgang',n:1},{name:'Dessert',n:2}]}]}],
+  offen:[{datum:dd(2),tag:tg(2),positionen:[{name:'Vorspeise',n:3},{name:'Dessert',n:3}]}],
+  verlauf:[{id:'d7',art:'anfrage',angebot:'Abendessen',datum:dd(-3),tag:tg(-3),personen:6,betrag:300,ps:'erledigt'},{id:'d8',art:'sofort',angebot:'Zum Fertigkochen',datum:dd(-5),tag:tg(-5),betrag:40,ps:'erledigt',positionen:[{name:'Vorspeise',n:2},{name:'Hauptgang',n:2}]},
+    {id:'d9',art:'anfrage',angebot:'Abendessen',datum:dd(-8),tag:tg(-8),personen:4,betrag:200,ps:'abgelehnt',grund:'Leider ausgebucht'}],
+  monat:{monat:dd(0).slice(0,7),anzahl:2,summe:340},
+  abrechnungen:[{nummer:'GS-2026-001',monat:dd(-32).slice(0,7),anzahl:7,summe:1200,status:'ausgezahlt',ausgezahltAm:dd(-28)}],
+  angebote:[{name:'Abendessen',art:'anfrage',preisart:'person',preis:50,status:'live',positionen:[]},{name:'Zum Fertigkochen',art:'sofort',preisart:'stueck',preis:0,status:'live',positionen:[{name:'Vorspeise',preis:10},{name:'Hauptgang',preis:20},{name:'Dessert',preis:7.5}]}]}}
+
+// ----- Server -----
+function call(body,cb,leise){if(DEMO)return demoCall(body,cb);body.t=TOK;body.s=S.s;S.busy=true;
+  fetch(API,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(body)}).then(function(r){return r.json()}).then(function(j){S.busy=false;
+    if(!j||j.ok===false){if(j&&j.code==='sitzung'){S.s='';store('pp_s_'+TOK,null);render();return}if(!leise)toast((j&&j.fehler)||'Fehler – bitte nochmal',true);cb&&cb(null);return}cb&&cb(j)})
+  .catch(function(){S.busy=false;if(!leise)toast('Keine Verbindung – bitte nochmal versuchen',true);cb&&cb(null)})}
+function demoCall(b,cb){var D=S.d||demoDaten();setTimeout(function(){
+  if(b.a==='laden'||b.a==='login')return cb(Object.assign(demoDaten(),{s:'demo'}));
+  if(b.a==='antwort'){var x=D.neu.filter(function(r){return r.id===b.id})[0];D.neu=D.neu.filter(function(r){return r.id!==b.id});
+    if(x&&b.ja){x.ps='zahlung';x.zahlenBis=new Date(Date.now()+4*36e5).toISOString();D.zahlung.push(x);return cb(Object.assign({},D,{meldung:'Zugesagt – der Gast hat jetzt bis '+wann(x.zahlenBis)+' Zeit zu bezahlen. Danach bekommst du die Fix-Buchung.'}))}
+    if(x){x.ps='abgelehnt';x.grund=b.grund;D.verlauf.unshift(x)}return cb(Object.assign({},D,{meldung:'Abgelehnt – der Gast bekommt Bescheid, es entstehen keine Kosten.'}))}
+  if(b.a==='sammel_ok'){D.sammel.forEach(function(g){if(g.datum===b.datum&&!!g.test===!!b.test)g.bestaetigt=true});return cb(Object.assign({},D,{meldung:'Danke – Bestellung bestätigt.'}))}
+  if(b.a==='test')return cb({meldung:'Vorschau: hier käme die Test-Nachricht.'});
+  if(b.a==='pin')return cb({meldung:'Vorschau: PIN würde geändert.'});
+  cb({})},250)}
+function laden(still){if(!S.s){render();return}call({a:'laden'},function(j){if(!j){if(!S.d)render();return}S.d=j;render()})}
+
+// ----- Mitteilungen (Web-Push) -----
+function istIos(){try{return /iPad|iPhone|iPod/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1)}catch(e){return false}}
+function istApp(){try{return window.navigator.standalone===true||(window.matchMedia&&window.matchMedia('(display-mode: standalone)').matches)}catch(e){return false}}
+function wpKann(){try{return !!(PAGES&&'serviceWorker' in navigator&&'PushManager' in window&&'Notification' in window)}catch(e){return false}}
+function geraetName(){var u=navigator.userAgent||'';return /iPad/.test(u)?'iPad':/iPhone/.test(u)?'iPhone':istIos()?'iPad':/Android/.test(u)?'Android':/Macintosh/.test(u)?'Mac':/Windows/.test(u)?'Windows':'Browser'}
+function wpAngemeldet(){return !!(S.d&&S.d.wp&&(S.d.wp.geraete||[]).some(function(g){return g.d===DEVID}))}
+function wpStatus(){
+  if(DEMO)return 'demo';
+  if(!PAGES)return 'alt';
+  if(!wpKann())return istIos()&&!istApp()?'install':'nosupport';
+  var p=Notification.permission;
+  if(p==='denied')return 'denied';
+  if(p==='granted')return store('pp_wpoff')==='1'?'aus':(wpAngemeldet()?'ok':'auto');
+  return 'default'}
+function badge(n){try{n=Math.max(0,Math.round(+n)||0);var p=n>0?(navigator.setAppBadge&&navigator.setAppBadge(n)):(navigator.clearAppBadge&&navigator.clearAppBadge());if(p&&p.catch)p.catch(function(){})}catch(e){}}
+function b64u(buf){var a=new Uint8Array(buf),s='';for(var i=0;i<a.length;i++)s+=String.fromCharCode(a[i]);return btoa(s).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'')}
+function keyBytes(k){k=String(k||'').replace(/-/g,'+').replace(/_/g,'/');while(k.length%4)k+='=';var r=atob(k),a=new Uint8Array(r.length);for(var i=0;i<r.length;i++)a[i]=r.charCodeAt(i);return a}
+function swReg(){return navigator.serviceWorker.register('sw.js',{scope:'./'}).then(function(){return navigator.serviceWorker.ready})}
+function wpFehler(e){var n=(e&&e.name)||'';if(n==='NotAllowedError')return 'Mitteilungen sind für diese App nicht erlaubt.';if(n==='AbortError'||n==='InvalidStateError')return 'Der Push-Dienst deines Handys antwortet gerade nicht – bitte später nochmal versuchen.';return 'Das hat leider nicht geklappt – bitte nochmal versuchen.'}
+function wpFrage(){return new Promise(function(res,rej){try{var p=Notification.requestPermission(function(r){res(r)});if(p&&p.then)p.then(res,rej)}catch(e){rej(e)}})}
+function wpAnmelden(still,cb){ // Gerät beim Push-Dienst anmelden und dem Server melden · cb(ok, text)
+  var key=S.d&&S.d.wp&&S.d.wp.key;if(!key){cb&&cb(false,'Es fehlt ein Schlüssel vom Server – bitte die App neu öffnen.');return}
+  swReg().then(function(reg){
+    return reg.pushManager.getSubscription().then(function(sub){
+      var ak=sub&&sub.options&&sub.options.applicationServerKey;
+      if(sub&&ak&&b64u(ak)!==key)return sub.unsubscribe().then(function(){return null});
+      return sub}).then(function(sub){return sub||reg.pushManager.subscribe({userVisibleOnly:true,applicationServerKey:keyBytes(key)})})
+  }).then(function(sub){
+    var j=sub.toJSON?sub.toJSON():{},k=j.keys||{};
+    if(!sub.endpoint||!k.p256dh||!k.auth)throw new Error('unvollständig');
+    call({a:'wpreg',dev:DEVID,e:sub.endpoint,p:k.p256dh,au:k.auth,ua:geraetName(),still:!!still},function(r){
+      if(!r){cb&&cb(false,'Der Server hat die Anmeldung nicht angenommen – bitte nochmal versuchen.');return}
+      store('pp_wpe',sub.endpoint.slice(-32));S.d=r;cb&&cb(true,r.meldung||'Mitteilungen sind aktiv.')},true)
+  }).catch(function(e){cb&&cb(false,wpFehler(e))})}
+function wpPruefen(){ // nach dem Laden still erneuern, falls nötig (neuer Push-Endpunkt oder beim Server entfernt)
+  if(S.wpPruef||DEMO||!S.s||!wpKann()||Notification.permission!=='granted'||store('pp_wpoff')==='1')return;S.wpPruef=true;
+  swReg().then(function(reg){return reg.pushManager.getSubscription()}).then(function(sub){
+    if(sub&&wpAngemeldet()&&store('pp_wpe')===sub.endpoint.slice(-32))return;
+    wpAnmelden(true,function(ok){if(ok)render()})}).catch(function(){})}
+function wpAktivieren(){
+  if(DEMO){toast('Vorschau: hier fragt dein Handy einmal um Erlaubnis.');return}
+  if(S.wpBusy||!wpKann())return;
+  store('pp_wpoff',null);S.wpBusy=true;render();
+  var ende=function(ok,t){S.wpBusy=false;render();toast(t,!ok)};
+  wpFrage().then(function(r){
+    if(r!=='granted'){ende(false,r==='denied'?'Mitteilungen wurden nicht erlaubt. Du kannst das jederzeit in den Einstellungen deines Handys ändern.':'Die Erlaubnis fehlt noch – bitte nochmal tippen und „Erlauben“ wählen.');return}
+    wpAnmelden(false,ende)}).catch(function(e){ende(false,wpFehler(e))})}
+function wpAus(){
+  if(DEMO){toast('Vorschau: hier würdest du die Mitteilungen ausschalten.');return}
+  store('pp_wpoff','1');
+  try{swReg().then(function(reg){return reg.pushManager.getSubscription()}).then(function(sub){return sub&&sub.unsubscribe()}).catch(function(){})}catch(e){}
+  call({a:'wpweg',dev:DEVID},function(j){if(j)S.d=j;render();toast('Mitteilungen sind auf diesem Gerät ausgeschaltet.')})}
+function wpTest(){
+  if(DEMO){toast('Vorschau: hier käme die Test-Mitteilung.');return}
+  call({a:'wptest',dev:DEVID},function(j){if(j)toast(j.meldung||'Gesendet')})}
+
+// ----- Ansichten -----
+function chip(ps){var m={neu:['Neu','dark'],zahlung:['Wartet auf Zahlung','warn'],fix:['Fix gebucht','ok'],gesendet:['Bitte bestätigen','warn'],bestaetigt:['Bestätigt','ok'],offen:['Vorbestellt',''],erledigt:['Erledigt','ok'],abgelehnt:['Abgelehnt',''],storniert:['Storniert','']}[ps]||[ps,''];return '<span class="tag '+m[1]+'">'+esc(m[0])+'</span>'}
+function tag2(x,ps){return '<span class="row" style="gap:6px;flex-wrap:nowrap">'+(x&&x.test?'<span class="tag test">Test</span>':'')+chip(ps)+'</span>'}
+function testHinweis(x){return x&&x.test?'<div class="hinweis">Das ist ein <b>Test</b> von uns – nichts davon ist echt und es zählt nicht für die Abrechnung. Du kannst ruhig damit herumprobieren.</div>':''}
+function pTxt(L){return (L||[]).map(function(x){return '<li><span>'+esc(x.name)+'</span><b class="num">'+x.n+'×</b></li>'}).join('')}
+function wpBanner(){var s=wpStatus();if(s!=='default'&&s!=='install')return '';
+  var z=+store('pp_wpb')||0;if(Date.now()-z<3*864e5)return '';
+  return '<div class="banner"><b>Mitteilungen einschalten</b><span>'+(s==='install'?'Leg die App auf deinen Home-Bildschirm – dann kommen neue Anfragen mit Ton und Zahl aufs Handy.':'Damit du neue Anfragen sofort mitbekommst – mit Ton und einer Zahl am App-Symbol.')+'</span>'+
+    '<div class="two"><button class="btn ghost" type="button" data-wpspaeter>Später</button>'+(s==='install'?'<button class="btn pri" type="button" data-tab="mehr">So geht’s</button>':'<button class="btn pri" type="button" data-wpan>Aktivieren</button>')+'</div></div>'}
+function vMitteilungen(){var s=wpStatus(),n=((S.d&&S.d.wp&&S.d.wp.geraete)||[]).length,b=S.wpBusy?' disabled':'';
+  var tag=s==='ok'?'<span class="tag ok">Aktiv</span>':s==='denied'?'<span class="tag err">Blockiert</span>':s==='aus'?'<span class="tag">Aus</span>':'';
+  var h='<div class="sec"><span class="lbl">Mitteilungen aufs Handy</span>'+tag+'</div><section class="card">';
+  if(s==='ok')h+='<div>Neue Anfragen und Bestellungen kommen jetzt direkt auf dieses Handy – mit Ton und einer Zahl am App-Symbol.</div>'+
+    '<button class="btn block" type="button" data-wptest'+b+'>Test-Mitteilung senden</button><button class="btn ghost block" type="button" data-wpaus'+b+'>Auf diesem Gerät ausschalten</button>'+(n>1?'<div class="muted" style="font-size:13px">Angemeldet auf '+n+' Geräten.</div>':'');
+  else if(s==='default'||s==='demo')h+='<div>Schalte die Mitteilungen ein, dann siehst du neue Anfragen sofort – mit Ton und einer Zahl am App-Symbol, auch wenn die App geschlossen ist.</div>'+
+    '<button class="btn pri block" type="button" data-wpan'+b+'>'+(S.wpBusy?'Einen Moment …':'Benachrichtigungen aktivieren')+'</button><div class="muted" style="font-size:13px">Dein Handy fragt dich dabei einmal um Erlaubnis – bitte „Erlauben“ wählen.</div>';
+  else if(s==='auto')h+='<div>Die Mitteilungen werden gerade für dieses Gerät eingerichtet …</div><button class="btn pri block" type="button" data-wpan'+b+'>Jetzt einrichten</button>';
+  else if(s==='aus')h+='<div>Mitteilungen sind auf diesem Gerät ausgeschaltet.</div><button class="btn pri block" type="button" data-wpan'+b+'>Wieder einschalten</button>';
+  else if(s==='denied')h+='<div>Dein Handy blockiert die Mitteilungen für diese App. So erlaubst du sie wieder:</div><ul class="steps"><li><b>iPhone:</b> Einstellungen → Mitteilungen → Partner</li><li><b>Android:</b> Einstellungen → Apps → Partner → Benachrichtigungen</li></ul><div class="muted" style="font-size:13px">Danach die App einmal schließen und neu öffnen.</div>';
+  else if(s==='install')h+='<div>Mitteilungen mit Ton und Zahl gibt es, sobald die App auf deinem Home-Bildschirm liegt:</div><ol class="steps"><li>In <b>Safari</b> unten auf <b>Teilen</b> tippen (Quadrat mit Pfeil).</li><li><b>Zum Home-Bildschirm</b> wählen und bestätigen.</li><li>App über das neue Symbol öffnen, anmelden und hier <b>Benachrichtigungen aktivieren</b> tippen.</li></ol><div class="muted" style="font-size:13px">Der Link muss dafür in Safari geöffnet sein (nicht in WhatsApp oder in der Mail-App) – sonst bitte zuerst in Safari öffnen.</div>';
+  else if(s==='alt')h+='<div>Mitteilungen direkt in der App gibt es in der neuen Version. Bitte öffne deinen persönlichen Link neu – oder nutze die Reserve unten (App ntfy).</div>';
+  else h+='<div>Dieses Gerät oder dieser Browser kann leider keine App-Mitteilungen anzeigen. Nutze bitte die Reserve unten (App ntfy).</div>';
+  return h+'</section>'}
+function vReserve(){var D=S.d;return '<details class="res" id="reserve"'+(S.resOpen?' open':'')+'><summary>Reserve: Mitteilungen über die App ntfy</summary><div class="resin">'+
+  '<div class="muted" style="font-size:13.5px">Falls die Mitteilungen oben bei dir nicht klappen, geht es auch über die kostenlose App „ntfy“.</div>'+
+  '<ol class="steps"><li>App <b>ntfy</b> installieren: <a href="https://apps.apple.com/app/ntfy/id1625396347" target="_blank" rel="noopener">iPhone</a> · <a href="https://play.google.com/store/apps/details?id=io.heckel.ntfy" target="_blank" rel="noopener">Android</a></li>'+
+  '<li>In ntfy auf <b>+</b> tippen und dieses Thema abonnieren:<div class="code" id="topic">'+esc(D.ntfy||'(noch nicht eingerichtet)')+'</div><button class="btn sm" type="button" data-kopie>Thema kopieren</button></li>'+
+  '<li>Test schicken – kommt die Nachricht an, bist du fertig.</li></ol><button class="btn block" type="button" data-test>Test-Nachricht über ntfy senden</button>'+
+  '<div class="muted" style="font-size:13px">Die Nachrichten enthalten nur Datum, Uhrzeit, Personen und Bestellung – keine Gästenamen. Teile das Thema nur mit deinem Team.</div></div></details>'}
+function vAnfragen(){var D=S.d,h=wpBanner();
+  h+='<div class="sec"><span class="lbl">Neue Anfragen</span><span class="muted num">'+D.neu.length+'</span></div>';
+  if(!D.neu.length)h+='<div class="card leer">Gerade keine offenen Anfragen.<br>Neue Anfragen kommen als Mitteilung aufs Handy.</div>';
+  D.neu.forEach(function(x){var offen=S.ab===x.id;
+    h+='<section class="card neu"><div class="row sp"><span class="lbl">'+esc(x.angebot)+'</span>'+tag2(x,'neu')+'</div>'+
+      '<div class="big">'+esc(x.tag)+' · '+esc(x.zeit)+' Uhr</div>'+
+      '<dl class="kv"><dt>Personen</dt><dd class="num">'+x.personen+'</dd><dt>Ort</dt><dd>'+esc(x.ort||'Seekirchen')+'</dd><dt>Für dich</dt><dd class="num">'+eur(x.betrag)+'</dd></dl>'+
+      (x.wunsch?'<div class="wunsch"><b>Wunsch:</b> '+esc(x.wunsch)+'</div>':'')+testHinweis(x)+
+      '<div class="hinweis">Bitte bis <b>'+esc(wann(x.antwortBis))+'</b> antworten. '+(x.test?'Bei einem Test gilt die Zusage sofort als bezahlt.':'Nach deiner Zusage hat der Gast '+(D.regeln&&D.regeln.zahlStd||4)+' Std. Zeit zu bezahlen – erst dann ist der Termin fix.')+'</div>'+
+      (offen?'<div class="feld">Warum nicht?<div class="chips">'+['Leider ausgebucht','Zu kurzfristig','Personenzahl passt nicht'].map(function(g){return '<button type="button" data-grund="'+esc(g)+'" aria-pressed="'+(S.grund===g)+'">'+esc(g)+'</button>'}).join('')+'</div>'+
+        '<input type="text" id="grundTxt" maxlength="120" placeholder="Oder kurz selbst schreiben (optional)" value="'+esc(S.grundTxt)+'"></div>'+
+        '<div class="two"><button class="btn ghost" type="button" data-abbr>Zurück</button><button class="btn pri" type="button" data-nein="'+esc(x.id)+'">Absagen</button></div>'
+       :'<div class="two"><button class="btn" type="button" data-ab="'+esc(x.id)+'">Ablehnen</button><button class="btn pri" type="button" data-ja="'+esc(x.id)+'">Annehmen</button></div>')+
+    '</section>'});
+  if(D.zahlung.length){h+='<div class="sec"><span class="lbl">Zugesagt – Gast zahlt noch</span></div>';
+    D.zahlung.forEach(function(x){h+='<section class="card"><div class="row sp"><span class="lbl">'+esc(x.angebot)+'</span>'+tag2(x,'zahlung')+'</div><div class="big">'+esc(x.tag)+' · '+esc(x.zeit||'')+' Uhr</div>'+
+      '<div class="muted">'+x.personen+' Personen · '+eur(x.betrag)+' für dich · bezahlt der Gast nicht bis '+esc(wann(x.zahlenBis))+', ist der Termin wieder frei.</div></section>'})}
+  return h}
+function vTermine(){var D=S.d,h='';
+  h+='<div class="sec"><span class="lbl">Bestellungen zum Fertigkochen</span></div>';
+  if(!D.sammel.length&&!D.offen.length)h+='<div class="card leer">Keine Bestellungen in den nächsten Tagen.</div>';
+  D.sammel.forEach(function(g){var hol={};g.lieferungen.forEach(function(l){if(l.abholung)hol[l.abholung]=1});
+    h+='<section class="card'+(g.bestaetigt?'':' neu')+'"><div class="row sp"><span class="lbl">Bestellung '+esc(g.tag)+'</span>'+tag2(g,g.bestaetigt?'bestaetigt':'gesendet')+'</div>'+
+      '<div class="big">Wir holen um '+esc(Object.keys(hol).sort().join(' / '))+' ab</div><div class="muted">bei dir im H16 · Lieferung macht unser Team</div>'+
+      '<ul class="posten">'+pTxt(g.posten)+'</ul><div class="row sp"><span class="muted">Für dich</span><span class="geld num">'+eur(g.summe)+'</span></div>'+
+      '<details><summary class="muted">Aufteilung je Lieferung</summary>'+g.lieferungen.map(function(l){return '<div style="margin-top:8px"><b>'+esc(l.apartment||'Apartment')+'</b> · '+esc(l.fenster)+' (Abholung '+esc(l.abholung)+')<ul class="posten">'+pTxt(l.positionen)+'</ul></div>'}).join('')+'</details>'+
+      testHinweis(g)+(g.bestaetigt?'':'<button class="btn pri block" type="button" data-sammel="'+esc(g.datum)+'"'+(g.test?' data-stest="1"':'')+'>Bestellung bestätigen</button>')+'</section>'});
+  if(D.offen.length){var by={};D.offen.forEach(function(x){var g=by[x.datum]||(by[x.datum]={tag:x.tag,p:{}});x.positionen.forEach(function(q){g.p[q.name]=(g.p[q.name]||0)+q.n})});
+    Object.keys(by).sort().forEach(function(k){var g=by[k];h+='<section class="card"><div class="row sp"><span class="lbl">Vorbestellt für '+esc(g.tag)+'</span>'+chip('offen')+'</div><ul class="posten">'+pTxt(Object.keys(g.p).map(function(n){return {name:n,n:g.p[n]}}))+'</ul>'+
+      '<div class="muted" style="font-size:13.5px">Zur Planung: endgültig wird es zum Bestellschluss am Vortag um 18:00 – dann kommt die Bestellung als Push.</div></section>'})}
+  h+='<div class="sec"><span class="lbl">Private Dinner – fix gebucht</span></div>';
+  if(!D.termine.length)h+='<div class="card leer">Noch keine fixen Termine.</div>';
+  D.termine.forEach(function(x){h+='<section class="card"><div class="row sp"><span class="lbl">'+esc(x.angebot)+'</span>'+tag2(x,'fix')+'</div><div class="big">'+esc(x.tag)+' · '+esc(x.zeit)+' Uhr</div>'+
+    '<dl class="kv"><dt>Personen</dt><dd class="num">'+x.personen+'</dd><dt>Gast</dt><dd>'+esc(x.gast||'')+'</dd><dt>Apartment</dt><dd>'+esc(x.apartment||'')+'</dd>'+
+    '<dt>Adresse</dt><dd><a href="https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(x.adresse||'')+'" target="_blank" rel="noopener">'+esc(x.adresse||'')+'</a></dd><dt>Für dich</dt><dd class="num">'+eur(x.betrag)+'</dd></dl>'+
+    (x.wunsch?'<div class="wunsch"><b>Wunsch:</b> '+esc(x.wunsch)+'</div>':'')+testHinweis(x)+'</section>'});
+  return h}
+function vAbrechnung(){var D=S.d,h='',m=D.monat||{};
+  h+='<section class="card"><span class="lbl">'+esc(monat(m.monat))+' bisher</span><div class="row sp"><span class="big num">'+eur(m.summe)+'</span><span class="muted num">'+(m.anzahl||0)+' Aufträge</span></div>'+
+    '<div class="muted" style="font-size:13.5px">Abgerechnet wird automatisch zum Monatsende – du bekommst eine Gutschrift und die Überweisung.</div></section>';
+  h+='<div class="sec"><span class="lbl">Abrechnungen</span></div>';
+  if(!D.abrechnungen.length)h+='<div class="card leer">Noch keine Abrechnung.</div>';
+  D.abrechnungen.forEach(function(a){h+='<section class="card"><div class="row sp"><span class="lbl">'+esc(monat(a.monat))+'</span>'+(a.status==='ausgezahlt'?'<span class="tag ok">Überwiesen '+esc(dvoll(a.ausgezahltAm))+'</span>':'<span class="tag warn">Wird überwiesen</span>')+'</div>'+
+    '<div class="row sp"><span class="muted">'+esc(a.nummer)+' · '+a.anzahl+' Aufträge</span><span class="geld num">'+eur(a.summe)+'</span></div></section>'});
+  if(D.verlauf.length){h+='<div class="sec"><span class="lbl">Zuletzt</span></div><section class="card" style="gap:0">';
+    D.verlauf.forEach(function(x,i){h+='<div class="row sp" style="padding:8px 0;'+(i?'border-top:1px solid var(--line)':'')+'"><span><b>'+esc(x.tag)+'</b> · '+esc(x.angebot)+(x.personen?' · '+x.personen+' P.':'')+(x.grund?'<br><span class="muted" style="font-size:13px">'+esc(x.grund)+'</span>':'')+'</span><span class="row">'+tag2(x,x.ps)+'<span class="num">'+eur(x.betrag)+'</span></span></div>'});
+    h+='</section>'}
+  return h}
+function vMehr(){var D=S.d,h=vMitteilungen();
+  h+='<div class="sec"><span class="lbl">Dein Angebot & deine Preise</span></div>';
+  D.angebote.forEach(function(o){h+='<section class="card"><div class="row sp"><span class="lbl">'+esc(o.name)+'</span><span class="tag '+(o.status==='live'?'ok':'')+'">'+(o.status==='live'?'Buchbar':'In Vorbereitung')+'</span></div>'+
+    (o.positionen&&o.positionen.length?'<ul class="posten">'+o.positionen.map(function(p){return '<li><span>'+esc(p.name)+'</span><b class="num">'+eur(p.preis)+'</b></li>'}).join('')+'</ul>':'<div class="row sp"><span class="muted">'+(o.preisart==='person'?'pro Person':'pauschal')+'</span><span class="geld num">'+eur(o.preis)+'</span></div>')+
+    '<div class="muted" style="font-size:13px">'+(o.art==='sofort'?'Sofort buchbar – Bestellschluss am Vortag 18:00, wir holen ab und liefern.':'Auf Anfrage – du sagst zu oder ab.')+'</div></section>'});
+  h+='<div class="hinweis">Preise oder Gerichte ändern? Schreib uns kurz – wir passen sie für dich an.</div>';
+  h+=vReserve();
+  h+='<div class="sec"><span class="lbl">PIN</span></div><section class="card">'+(S.pinNeu?'<label class="feld">Alte PIN<input type="password" inputmode="numeric" maxlength="6" id="pAlt" autocomplete="current-password"></label>'+
+    '<label class="feld">Neue PIN (6 Ziffern)<input type="password" inputmode="numeric" maxlength="6" id="pNeu" autocomplete="new-password"></label><label class="feld">Neue PIN wiederholen<input type="password" inputmode="numeric" maxlength="6" id="pNeu2" autocomplete="new-password"></label>'+
+    '<div class="two"><button class="btn ghost" type="button" data-pin0>Abbrechen</button><button class="btn pri" type="button" data-pinok>Speichern</button></div>':'<button class="btn block" type="button" data-pin1>PIN ändern</button>')+'</section>';
+  h+='<button class="btn ghost block" type="button" data-raus>Abmelden</button>';
+  h+='<p class="muted" style="font-size:12px;text-align:center;margin:4px 0 0">Premium Apartments Seekirchen · Partner-Bereich</p>';
+  return h}
+function vLogin(){return '<div class="login"><img src="'+LOGO+'" alt="Premium Apartments Seekirchen"><div><span class="lbl">Partner-Bereich</span><h1 style="font-size:26px;margin-top:6px">Willkommen!</h1></div>'+
+  (TOK?'<p class="muted" style="margin:0">Bitte deine 6-stellige PIN eingeben.</p><div class="pin">'+[0,1,2,3,4,5].map(function(i){return '<input type="password" inputmode="numeric" maxlength="1" autocomplete="one-time-code" data-pi="'+i+'" aria-label="PIN Ziffer '+(i+1)+'">'}).join('')+'</div>'+
+  '<button class="btn pri" type="button" id="loginBtn" style="min-width:220px">Anmelden</button>':'<p class="muted">Bitte den persönlichen Link von Premium Apartments verwenden.</p>')+'</div>'}
+function render(){var app=$('#app');
+  if(!DEMO&&(!TOK||!S.s)){app.innerHTML=vLogin();var f=document.querySelector('[data-pi="0"]');if(f)setTimeout(function(){f.focus()},50);document.title='Partner · Premium Apartments Seekirchen';if(!DEMO)badge(0);return}
+  if(!S.d){app.innerHTML='<div class="leer">Lade …</div>';return}
+  var D=S.d,nNeu=D.neu.length+D.sammel.filter(function(g){return !g.bestaetigt}).length;
+  var top='<header class="top"><img src="'+LOGO+'" alt="Premium Apartments Seekirchen"><div class="wer">Partner-Bereich<b>'+esc(D.name)+'</b></div></header>';
+  var body=S.tab==='termine'?vTermine():S.tab==='abrechnung'?vAbrechnung():S.tab==='mehr'?vMehr():vAnfragen();
+  app.innerHTML=top+'<main>'+(DEMO?'<div class="demo"><b>Vorschau mit Beispieldaten</b> – nichts davon ist echt, Antworten werden nicht gespeichert.</div>':'')+body+'</main>'+
+    '<nav><div class="in">'+[['anfragen','Anfragen','inbox',D.neu.length],['termine','Termine','cal',D.sammel.filter(function(g){return !g.bestaetigt}).length],['abrechnung','Abrechnung','geld',0],['mehr','Mehr','mehr',0]].map(function(t){
+      return '<button type="button" data-tab="'+t[0]+'"'+(S.tab===t[0]?' aria-current="page"':'')+'>'+IC[t[2]]+'<span>'+t[1]+'</span>'+(t[3]?'<span class="badge">'+t[3]+'</span>':'')+'</button>'}).join('')+'</div></nav>';
+  document.title=(nNeu?'('+nNeu+') ':'')+'Partner · Premium Apartments';
+  if(!DEMO){badge(nNeu);wpPruefen()}
+}
+function pinWert(){return Array.prototype.map.call(document.querySelectorAll('[data-pi]'),function(i){return i.value}).join('')}
+function login(){var pin=pinWert();if(pin.length!==6){toast('Bitte 6 Ziffern eingeben',true);return}
+  var b=$('#loginBtn');if(b){b.disabled=true;b.textContent='Anmelden …'}
+  fetch(API,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({a:'login',t:TOK,pin:pin})}).then(function(r){return r.json()}).then(function(j){
+    if(!j||!j.ok){toast((j&&j.fehler)||'Anmeldung fehlgeschlagen',true);document.querySelectorAll('[data-pi]').forEach(function(i){i.value=''});var f=document.querySelector('[data-pi="0"]');if(f)f.focus();if(b){b.disabled=false;b.textContent='Anmelden'}return}
+    S.s=j.s;store('pp_s_'+TOK,j.s);laden()}).catch(function(){toast('Keine Verbindung – bitte nochmal',true);if(b){b.disabled=false;b.textContent='Anmelden'}})}
+document.addEventListener('input',function(e){var t=e.target;if(t.dataset&&t.dataset.pi!=null){t.value=t.value.replace(/\D/g,'').slice(-1);if(t.value){var n=document.querySelector('[data-pi="'+(+t.dataset.pi+1)+'"]');if(n)n.focus();else if(pinWert().length===6)login()}}
+  if(t.id==='grundTxt'){S.grundTxt=t.value}});
+document.addEventListener('keydown',function(e){var t=e.target;if(t.dataset&&t.dataset.pi!=null&&e.key==='Backspace'&&!t.value){var p=document.querySelector('[data-pi="'+(+t.dataset.pi-1)+'"]');if(p){p.focus();p.value=''}}
+  if(t.dataset&&t.dataset.pi!=null&&e.key==='Enter')login()});
+document.addEventListener('paste',function(e){var t=e.target;if(!(t.dataset&&t.dataset.pi!=null))return;var v=((e.clipboardData||window.clipboardData).getData('text')||'').replace(/\D/g,'').slice(0,6);if(v.length<2)return;e.preventDefault();
+  document.querySelectorAll('[data-pi]').forEach(function(i,k){i.value=v[k]||''});if(v.length===6)login()});
+document.addEventListener('click',function(e){var t=e.target.closest('button,[data-tab]');if(!t)return;var D=S.d;
+  if(t.id==='loginBtn'){login();return}
+  if(t.dataset.tab){S.tab=t.dataset.tab;S.ab='';render();window.scrollTo(0,0);return}
+  if(t.dataset.ja){t.disabled=true;call({a:'antwort',id:t.dataset.ja,ja:true},function(j){if(j){S.d=j;toast(j.meldung||'Zugesagt')}render()});return}
+  if(t.dataset.ab){S.ab=t.dataset.ab;S.grund='';S.grundTxt='';render();return}
+  if(t.dataset.abbr!=null){S.ab='';render();return}
+  if(t.dataset.grund){S.grund=S.grund===t.dataset.grund?'':t.dataset.grund;render();return}
+  if(t.dataset.nein){var g=(S.grundTxt||'').trim()||S.grund;t.disabled=true;call({a:'antwort',id:t.dataset.nein,ja:false,grund:g},function(j){if(j){S.d=j;S.ab='';toast(j.meldung||'Abgesagt')}render()});return}
+  if(t.dataset.sammel){t.disabled=true;call({a:'sammel_ok',datum:t.dataset.sammel,test:t.dataset.stest==='1'},function(j){if(j){S.d=j;toast(j.meldung||'Bestätigt')}render()});return}
+  if(t.dataset.wpan!=null){wpAktivieren();return}
+  if(t.dataset.wpaus!=null){wpAus();return}
+  if(t.dataset.wptest!=null){wpTest();return}
+  if(t.dataset.wpspaeter!=null){store('pp_wpb',String(Date.now()));render();return}
+  if(t.dataset.test!=null){call({a:'test'},function(j){if(j)toast(j.meldung||'Gesendet')});return}
+  if(t.dataset.kopie!=null){var tx=(D&&D.ntfy)||'';try{navigator.clipboard.writeText(tx).then(function(){toast('Kopiert')},function(){sel()})}catch(x){sel()}
+    function sel(){var el=$('#topic');if(!el)return;var r=document.createRange();r.selectNodeContents(el);var s2=window.getSelection();s2.removeAllRanges();s2.addRange(r);toast('Markiert – jetzt kopieren')}return}
+  if(t.dataset.pin1!=null){S.pinNeu=true;render();return}
+  if(t.dataset.pin0!=null){S.pinNeu=false;render();return}
+  if(t.dataset.pinok!=null){var a1=$('#pAlt').value,n1=$('#pNeu').value,n2=$('#pNeu2').value;if(!/^\d{6}$/.test(n1)){toast('Neue PIN: genau 6 Ziffern',true);return}if(n1!==n2){toast('Die neuen PINs stimmen nicht überein',true);return}
+    call({a:'pin',alt:a1,neu:n1},function(j){if(j){S.pinNeu=false;toast(j.meldung||'PIN geändert');render()}});return}
+  if(t.dataset.raus!=null){if(!DEMO){call({a:'abmelden',dev:DEVID},function(){});if(wpKann()){store('pp_wpoff','1');try{navigator.serviceWorker.getRegistration().then(function(reg){return reg&&reg.pushManager.getSubscription()}).then(function(sub){return sub&&sub.unsubscribe()}).catch(function(){})}catch(x){}}}S.s='';S.d=null;S.wpPruef=false;store('pp_s_'+TOK,null);render();return}
+});
+// Aktualisieren: beim Zurückkehren in die App sofort, sonst alle 2 Minuten – aber nur, solange jemand die App bedient (nach 20 Min. Ruhe Pause, Push-Nachrichten melden Neues)
+var AKTIV=Date.now();['pointerdown','keydown','touchstart','scroll'].forEach(function(ev){document.addEventListener(ev,function(){AKTIV=Date.now()},{passive:true})});
+document.addEventListener('visibilitychange',function(){if(document.visibilityState==='visible'){AKTIV=Date.now();if(S.s&&!S.busy)laden(true)}});
+setInterval(function(){if(document.visibilityState==='visible'&&Date.now()-AKTIV<20*60000&&S.s&&!S.busy&&!S.ab&&!S.pinNeu)laden(true)},120000);
+document.addEventListener('toggle',function(e){if(e.target&&e.target.id==='reserve')S.resOpen=e.target.open},true);
+if(PAGES){try{navigator.serviceWorker.register('sw.js',{scope:'./'}).catch(function(){});
+  navigator.serviceWorker.addEventListener('message',function(e){var m=e.data;if(m&&m.t==='push'&&S.s&&!S.busy&&!S.ab&&!S.pinNeu)laden(true)})}catch(x){/* z. B. in der alten n8n-Seite nicht erlaubt */}}
+if(DEMO){S.d=demoDaten();render()}else if(S.s)laden();else render();
+})();
+</script>
+</body>
+</html>
