@@ -128,7 +128,7 @@ nav .bd{position:absolute;top:6px;left:calc(50% + 8px);min-width:18px;height:18p
 (function () {
 'use strict';
 /* ===== Belege · Handy-App · Teil 1: Hilfen, Speicher, Schnittstelle, Foto, Warteschlange ===== */
-var API = 'https://reneaugustin.app.n8n.cloud/webhook/beleg-api', VER = '2026-10-07.1';
+var API = 'https://reneaugustin.app.n8n.cloud/webhook/beleg-api', VER = '2026-10-08.1';
 var LS_T = 'bl_t', LS_CFG = 'bl_cfg', LS_VOR = 'bl_vor';
 var DE = 'de-DE';
 
@@ -291,7 +291,7 @@ function bildAufbereiten(file, maxKB) {
 
 /* ===== Belege · Handy-App · Teil 2: Warteschlange, Ansichten, Start ===== */
 var STAT = { neu: 'Nicht abgelegt', hochgeladen: 'Abgelegt', gelesen: 'Gelesen', bestaetigt: 'Bestätigt', geprueft: 'Geprüft', gebucht: 'Gebucht', storniert: 'Storniert' };
-var STEUER = [{ k: 'V20', n: '20 %' }, { k: 'V13', n: '13 %' }, { k: 'V10', n: '10 %' }, { k: 'V0', n: '0 %' }, { k: 'GEMISCHT', n: 'Gemischt' }];
+var STEUER = [{ k: 'V20', n: '20 %' }, { k: 'V13', n: '13 %' }, { k: 'V10', n: '10 %' }, { k: 'V4.9', n: '4,9 %' }, { k: 'V0', n: '0 %' }, { k: 'GEMISCHT', n: 'Gemischt' }];
 var pollTimer = null;
 
 function toast(m, ms) {
@@ -525,7 +525,7 @@ function wahl(k, liste, leerText, gesperrt) {
   return s;
 }
 function ustRechnen() {
-  var b = zahlLesen(S.edit.betrag), r = { V20: 20, V13: 13, V10: 10, V0: 0 }[S.edit.steuer];
+  var b = zahlLesen(S.edit.betrag), r = { V20: 20, V13: 13, V10: 10, 'V4.9': 4.9, V0: 0 }[S.edit.steuer];
   if (b === null || r === undefined) { toast('Bitte zuerst Betrag und Steuersatz eintragen.'); return; }
   S.edit.ust = zahlIn(Math.round((b - b / (1 + r / 100)) * 100) / 100); S.editDirty = true; render();
 }
