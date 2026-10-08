@@ -1,5 +1,5 @@
 // Belege · Service Worker: nur die App-Hülle merken (Netz zuerst, bei Ausfall die gemerkte Fassung). Keine Anfragen an den Server, keine Belegdaten.
-var CACHE = 'belege-2026-10-07.1';
+var CACHE = 'belege-2026-10-08.1';
 var HUELLE = ['./', 'index.html', 'manifest.json', 'icon-180.png', 'icon-192.png', 'icon-512.png'];
 
 self.addEventListener('install', function (e) {
