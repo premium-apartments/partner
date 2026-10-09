@@ -15,17 +15,22 @@ function anApp(n) { // offene App benachrichtigen → sie lädt die Daten gleich
     list.forEach(function (c) { try { c.postMessage({ t: 'push', n: n }); } catch (z) { /* ignorieren */ } });
   });
 }
+// Empfangsbestätigung (nur zur Prüfung, ob Mitteilungen am Handy ankommen): Stufe + Kennung der Mitteilung, keine Personendaten
+var QUITT = 'https://reneaugustin.app.n8n.cloud/webhook/team-push-quittung';
+function quittung(s, k) {
+  try { return fetch(QUITT + '?s=' + encodeURIComponent(s) + '&k=' + encodeURIComponent(String(k || '').slice(0, 80)) + '&v=2', { mode: 'no-cors', cache: 'no-store' }).catch(function () {}); } catch (e) { return Promise.resolve(); }
+}
 self.addEventListener('push', function (e) {
   var m = {};
   try { m = e.data ? e.data.json() : {}; } catch (x) { try { m = { body: e.data.text() }; } catch (y) { m = {}; } }
   if (!m || typeof m !== 'object') m = {};
+  if (m.web_push === 8030 && m.notification && typeof m.notification === 'object') { var dn = m.notification; m = { title: dn.title, body: dn.body, url: dn.navigate, tag: dn.tag }; } // deklaratives Format
   var opt = { body: String(m.body || '').slice(0, 400), icon: 'icon-192.png', data: { url: eigeneUrl(m.url) } };
-  if (m.tag) { opt.tag = String(m.tag).slice(0, 60); opt.renotify = true; }
+  if (m.tag) opt.tag = String(m.tag).slice(0, 60);
   // Jede Push-Nachricht muss eine sichtbare Mitteilung auslösen (Vorgabe von Safari/iOS)
-  e.waitUntil(Promise.all([
-    self.registration.showNotification(String(m.title || 'Premium Apartments · Team').slice(0, 120), opt),
-    anApp(m.n)
-  ]));
+  var zeigen = self.registration.showNotification(String(m.title || 'Premium Apartments · Team').slice(0, 120), opt)
+    .then(function () { return quittung('gezeigt', m.tag); }, function (err) { return quittung('fehler', (err && err.name || '') + ' ' + (err && err.message || err)); });
+  e.waitUntil(Promise.all([quittung('empfangen', m.tag), zeigen, anApp(m.n)]));
 });
 self.addEventListener('notificationclick', function (e) {
   e.notification.close();
