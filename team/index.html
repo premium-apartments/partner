@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="PA Team">
+<meta name="theme-color" content="#C1BCB6">
+<meta name="robots" content="noindex, nofollow">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="icon" type="image/png" href="icon-192.png">
+<title>Premium Apartments · Team</title>
+<style>
+html,body{margin:0;background:#DBD7D3;color:#2B2B2A;font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Helvetica,Arial,sans-serif}
+.l{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:24px;box-sizing:border-box;text-align:center}
+.l img{width:72px;height:72px}
+.l p{margin:0;font-size:17px;line-height:1.4}
+.l small{color:#5C5852;font-size:15px}
+.l button{font:inherit;font-size:17px;border:0;background:#2B2B2A;color:#fff;padding:12px 22px;min-height:48px;cursor:pointer}
+</style>
+</head>
+<body>
+<div class="l"><img src="icon-192.png" alt=""><p id="t">Lade …</p></div>
+<script>
+// Team-App von Premium Apartments: Diese Seite holt die freigegebene App vom Server und zeigt sie hier an.
+// So laufen Mitteilungen (Service Worker sw.js) und der Speicher im Handy. Daten und Anmeldung bleiben auf dem Server.
+(function () {
+  var SRC = 'https://reneaugustin.app.n8n.cloud/webhook/reinigung?code=1';
+  var HEAD = '<link rel="manifest" href="manifest.json"><link rel="apple-touch-icon" href="icon-180.png"><link rel="icon" type="image/png" href="icon-192.png">';
+  var L = 'de'; try { L = window.localStorage.getItem('team.pa_lang') || 'de'; } catch (e) {}
+  var T = {
+    de: ['Lade …', 'Keine Verbindung – bitte nochmal versuchen.', 'Nochmal'],
+    bg: ['Зареждане …', 'Няма връзка – опитай отново.', 'Отново'],
+    en: ['Loading …', 'No connection – please try again.', 'Try again']
+  }[L] || null;
+  if (!T) T = ['Lade …', 'Keine Verbindung – bitte nochmal versuchen.', 'Nochmal'];
+  var t = document.getElementById('t');
+  t.textContent = T[0];
+  function fehler() {
+    t.textContent = T[1];
+    var b = document.createElement('button'); b.textContent = T[2];
+    b.onclick = function () { location.reload(); };
+    t.parentNode.appendChild(b);
+  }
+  var v = (/[?&]v=(\d+)/.exec(location.search) || [])[1] || '';
+  var ctl = null; try { ctl = new AbortController(); } catch (e) {}
+  var uhr = setTimeout(function () { if (ctl) ctl.abort(); }, 20000);
+  fetch(SRC + (v ? '&v=' + v : '') + '&t=' + Date.now(), { cache: 'no-store', signal: ctl ? ctl.signal : undefined })
+    .then(function (r) { if (!r.ok) throw new Error('http ' + r.status); return r.text(); })
+    .then(function (h) {
+      clearTimeout(uhr);
+      if (!/<html|<!doctype/i.test(h)) throw new Error('keine Seite');
+      h = h.replace(/<link rel="apple-touch-icon"[^>]*>/i, '');
+      h = /<head>/i.test(h) ? h.replace(/<head>/i, '<head>' + HEAD) : HEAD + h;
+      document.open(); document.write(h); document.close();
+    })
+    .catch(function () { clearTimeout(uhr); fehler(); });
+})();
+</script>
+</body>
+</html>
